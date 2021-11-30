@@ -1,8 +1,6 @@
 package com.application.signatures.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@Table
+@Table(name = "usr")
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor

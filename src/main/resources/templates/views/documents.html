@@ -22,14 +22,15 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">Название</th>
-            <h1 th:text="${'Пользователь '+session.User}"></h1>
+            <h1 th:text="${'Пользователь '+ session.user}"></h1>
         </tr>
         </thead>
         <tbody>
 
         <tr scope="row"  th:each="tempDocunemt : ${documents}">
-            <th th:onclick = "location.href='open?fileName='+/*[[${tempDocunemt.name}]]*/+" class="align-middle" th:text="${tempDocunemt.name}"></th>
+            <th th:onclick = "location.href='open?fileName='+/*[[${tempDocunemt.name}]]*/+;" class="align-middle" th:text="${tempDocunemt.name}"></th>
         </tr>
+
         </tbody>
     </table>
 </div>

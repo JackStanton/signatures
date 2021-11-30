@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class Sign {
     private String login;
     private Boolean sign;
+    private Boolean typeSign;
 
     @Override
     public String toString() {

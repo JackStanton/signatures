@@ -1,7 +1,6 @@
 package com.application.signatures.jackson.parser;
 
 
-import com.application.signatures.jackson.entity.LevelXml;
 import com.application.signatures.jackson.entity.DocumentXml;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import org.springframework.stereotype.Component;
@@ -12,12 +11,11 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.List;
 
 @Component
 public class XmlParser {
 
-    public void objectToXml(String filename, Object obj) {
+    public static void objectToXml(String filename, Object obj) {
         try {
             XmlMapper xmlMapper = new XmlMapper();
             xmlMapper.writerWithDefaultPrettyPrinter()
@@ -27,7 +25,7 @@ public class XmlParser {
         }
     }
 
-    public DocumentXml xmlToObject(File file) {
+    public static DocumentXml xmlToObject(File file) {
         DocumentXml documentXml = new DocumentXml();
         try{
             XmlMapper xmlMapper = new XmlMapper();

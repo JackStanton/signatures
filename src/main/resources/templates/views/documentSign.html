@@ -14,7 +14,8 @@
 <div class="container-fluid well text-center">
     <div class="panel-body">
         <h1>Подписи</h1>
-        <h1 th:text="${'Пользователь '+session.User}"></h1>
+        <h1 th:text="${'Стратус подписи '+document.sign}"></h1>
+        <h1 th:text="${'Пользователь '+ session.user}"></h1>
     </div>
 </div>
 
@@ -25,6 +26,7 @@
             <th scope="col">Название</th>
             <th scope="col">Пользователь</th>
             <th scope="col">Подпись</th>
+            <th scope="col">Действие</th>
         </tr>
         </thead>
         <tbody>
@@ -33,7 +35,11 @@
             <th class="align-middle" th:text="${level.name}"></th>
             <th class="align-middle" ><p th:text="${level.userSign}"></p></th>
             <th class="align-middle" th:text="${level.sign}"></th>
-            <th th:onclick = "location.href='openLevel?name='+/*[[${level.name}]]*/+;">Подписать</th>
+            <th th:if="${level.isSign(session.user)||level.isFullSign(1)}">Завершено</th>
+            <th th:if ="${level.isActive()&&level.checkUser(session.user)&&!level.isSign(session.user)}"
+                th:onclick = "if ((confirm('Выберите ДА чтобы подписать, или НЕТ чтобы поставить подпись типа FALSE'))) return location.href='openLevel?name='+/*[[${level.name}]]*/+; return location.href='falseLevel?name='+/*[[${level.name}]]*/+;"
+                >Подписать</th>
+            <th th:if="${!(level.isSign(session.user)||level.isFullSign(1))&&!(level.isActive()&&level.checkUser(session.user)&&!level.isSign(session.user))}">Ожидается подпись другого пользователя</th>
         </tr>
         </tbody>
     </table>

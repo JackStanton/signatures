@@ -19,21 +19,24 @@ public class SignaturesApplication {
         SpringApplication.run(SignaturesApplication.class, args);
         DocumentXml documentXml = new DocumentXml();
         List<LevelXml> list = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        int[] arr = {1,1,2,3,1,2,1};
+        for (int i = 0; i < arr.length; i++) {
+            boolean active = i == 0;
             List<Sign> map = new ArrayList<>();
-            map.add(new Sign("test", false));
-            LevelXml levelXml = new LevelXml("level1",map, false);
-            list.add(levelXml);
-        }
-        for (int i = 0; i < 2; i++) {
-            List<Sign> map = new ArrayList<>();
-            map.add(new Sign("test", false));
-            map.add(new Sign("test1", false));
-            LevelXml levelXml = new LevelXml("level1",map, false);
+            String operator = "null";
+            if(arr[i] == 1){
+                map.add(new Sign("test", false, false));
+            }else {
+                if(arr[i] == 3) operator = "or";else operator = "and";
+                map = new ArrayList<>();
+                map.add(new Sign("test", false, false));
+                map.add(new Sign("test1", false, false));
+            }
+            LevelXml levelXml;
+            levelXml = new LevelXml(i, "level"+i,map, false,operator, active);
             list.add(levelXml);
         }
         documentXml.setLevelXmls(list);
-        XmlParser xmlParser = new XmlParser();
-        xmlParser.objectToXml("file.xml", documentXml);
+        XmlParser.objectToXml("file1.xml", documentXml);
     }
 }

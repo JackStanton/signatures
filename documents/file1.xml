@@ -1,80 +1,115 @@
 <document sign="false">
   <level>
-    <name>level1</name>
+    <number>0</number>
+    <name>level0</name>
     <userSign>
       <userSign>
         <login>test</login>
         <sign>false</sign>
+        <typeSign>false</typeSign>
       </userSign>
     </userSign>
     <sign>false</sign>
+    <operation>null</operation>
+    <active>true</active>
   </level>
   <level>
+    <number>1</number>
     <name>level1</name>
     <userSign>
       <userSign>
         <login>test</login>
         <sign>false</sign>
+        <typeSign>false</typeSign>
       </userSign>
     </userSign>
     <sign>false</sign>
+    <operation>null</operation>
+    <active>false</active>
   </level>
   <level>
-    <name>level1</name>
+    <number>2</number>
+    <name>level2</name>
     <userSign>
       <userSign>
         <login>test</login>
         <sign>false</sign>
-      </userSign>
-    </userSign>
-    <sign>false</sign>
-  </level>
-  <level>
-    <name>level1</name>
-    <userSign>
-      <userSign>
-        <login>test</login>
-        <sign>false</sign>
-      </userSign>
-    </userSign>
-    <sign>false</sign>
-  </level>
-  <level>
-    <name>level1</name>
-    <userSign>
-      <userSign>
-        <login>test</login>
-        <sign>false</sign>
-      </userSign>
-    </userSign>
-    <sign>false</sign>
-  </level>
-  <level>
-    <name>level1</name>
-    <userSign>
-      <userSign>
-        <login>test</login>
-        <sign>false</sign>
+        <typeSign>false</typeSign>
       </userSign>
       <userSign>
         <login>test1</login>
         <sign>false</sign>
+        <typeSign>false</typeSign>
       </userSign>
     </userSign>
     <sign>false</sign>
+    <operation>and</operation>
+    <active>false</active>
   </level>
   <level>
-    <name>level1</name>
+    <number>3</number>
+    <name>level3</name>
     <userSign>
       <userSign>
         <login>test</login>
         <sign>false</sign>
+        <typeSign>false</typeSign>
       </userSign>
       <userSign>
         <login>test1</login>
         <sign>false</sign>
+        <typeSign>false</typeSign>
       </userSign>
     </userSign>
     <sign>false</sign>
+    <operation>or</operation>
+    <active>false</active>
+  </level>
+  <level>
+    <number>4</number>
+    <name>level4</name>
+    <userSign>
+      <userSign>
+        <login>test</login>
+        <sign>false</sign>
+        <typeSign>false</typeSign>
+      </userSign>
+    </userSign>
+    <sign>false</sign>
+    <operation>null</operation>
+    <active>false</active>
+  </level>
+  <level>
+    <number>5</number>
+    <name>level5</name>
+    <userSign>
+      <userSign>
+        <login>test</login>
+        <sign>false</sign>
+        <typeSign>false</typeSign>
+      </userSign>
+      <userSign>
+        <login>test1</login>
+        <sign>false</sign>
+        <typeSign>false</typeSign>
+      </userSign>
+    </userSign>
+    <sign>false</sign>
+    <operation>and</operation>
+    <active>false</active>
+  </level>
+  <level>
+    <number>6</number>
+    <name>level6</name>
+    <userSign>
+      <userSign>
+        <login>test</login>
+        <sign>false</sign>
+        <typeSign>false</typeSign>
+      </userSign>
+    </userSign>
+    <sign>false</sign>
+    <operation>null</operation>
+    <active>false</active>
   </level>
 </document>
