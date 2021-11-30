@@ -14,10 +14,12 @@ import org.springframework.web.servlet.function.RequestPredicates;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Controller
-@SessionAttributes("User")
+@SessionAttributes({"User", "Doc"})
 public class MainController {
 
     private final UserService userService;
@@ -37,7 +39,7 @@ public class MainController {
 
     @RequestMapping("/login")
     public String doLogin(Model model) {
-        setUser(new User());
+        setAttr(new User());
         model.addAttribute("user", new User());
         model.addAttribute("message", "");
         return "login";
@@ -49,7 +51,7 @@ public class MainController {
         if(authUser != null){
             model.addAttribute("authUser", authUser);
             request.setAttribute("test","test123");
-            setUser(authUser);
+            setAttr(authUser);
             model.addAttribute("documents", directoryHandler.getFiles("documents"));
             return "views/documents";
         }else {
@@ -62,27 +64,39 @@ public class MainController {
     public String openFile(@RequestParam("fileName") String fileName, Model model){
         model.addAttribute("document", xmlService.getDocument(new File(fileName)));
         model.addAttribute("documentTmp", new DocumentXml());
-        setDoc(xmlService.getDocument(new File(fileName)));
+        setAttr(fileName);
         return "views/documentSign";
     }
 
     @RequestMapping(value = "/openLevel", method = RequestMethod.GET)
     public String openLevel(@RequestParam("name") String name, Model model, HttpSession session){
-        String doc = (String) session.getAttribute("User");
-        System.out.println(doc);
-        return "index";
+        HashMap<String, String> map = (HashMap<String, String>) session.getAttribute("User");
+        String user = map.get("User");
+        String doc = "/documents/" + map.get("Doc");
+        System.out.println(user+" "+doc+" "+name);
+        xmlService.setSign(doc,name,user,true);
+
+        return "views/documents";
     }
 
     @ModelAttribute("User")
-    public String setUser (User user) {
+    public HashMap<String, String> setAttr (User user) {
         if(user == null){
             return null;
         }
-        return user.getLogin();
+        HashMap<String, String> map = new HashMap<>();
+        map.put("User", user.getLogin());
+        return  map;
     }
 
-    @ModelAttribute("Doc")
-    public DocumentXml setDoc (DocumentXml doc) {
-        return doc;
+    @ModelAttribute("User")
+    public HashMap<String, String> setAttr (String doc) {
+        if(doc == null){
+            return null;
+        }
+        HashMap<String, String> map = new HashMap<>();
+        map.put("Doc", doc);
+        return  map;
     }
+
 }
