@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru"
+>
+<head>
+    <title>Документы</title>
+</head>
+<body>
+<div th:replace="~{includes/links.html :: div}"></div>
+<div class="navbar">
+    <nav th:replace="~{includes/navbar.html :: nav}"></nav>
+</div>
+<div class="container-fluid well text-center">
+    <div class="panel-body">
+        <h1>Список докуменов</h1>
+    </div>
+</div>
+
+<div class="container-fluid text-center">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Название</th>
+            <h1 th:text="${'Пользователь '+session.User}"></h1>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr scope="row"  th:each="tempDocunemt : ${documents}">
+            <th th:onclick = "location.href='open?fileName='+/*[[${tempDocunemt.name}]]*/+" class="align-middle" th:text="${tempDocunemt.name}"></th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

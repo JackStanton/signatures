@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru"
+>
+<head>
+    <title>Главная страница</title>
+</head>
+<body>
+<div th:replace="includes/links :: div"></div>
+<div class="navbar">
+    <nav th:replace="includes/navbar.html :: nav"></nav>
+</div>
+<div class="container-fluid well text-center" >
+    <div>
+        <h1>Главная страница</h1>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-sm-4 col-md-3 col-lg-2 list-group-item m-1 card_custom" >
+            <div class="m-3 h4" style="height: 50px; padding-top: 7%">
+                <p class="text-center ">Начать работу</p>
+            </div>
+            <a th:href="${'/login'}" class="stretched-link"></a>
+        </div>
+<!--        <div class="col-sm-4 col-md-3 col-lg-2 list-group-item m-1 card_custom">-->
+<!--            <div class="m-3 h4" style="height: 50px; padding-top: 7%">-->
+<!--                <p class="text-center">Ничего</p>-->
+<!--            </div>-->
+<!--            <a th:href="${'/'}" class="stretched-link"></a>-->
+<!--        </div>-->
+    </div>
+</div>
+</body>
+</html>

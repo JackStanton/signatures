@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      lang="ru"
+>
+<head>
+    <title>Подписи</title>
+</head>
+<body>
+<div th:replace="~{includes/links.html :: div}"></div>
+<div class="navbar">
+    <nav th:replace="~{includes/navbar.html :: nav}"></nav>
+</div>
+<div class="container-fluid well text-center">
+    <div class="panel-body">
+        <h1>Подписи</h1>
+        <h1 th:text="${'Пользователь '+session.User}"></h1>
+    </div>
+</div>
+
+<div class="container-fluid text-center">
+    <table class="table table-hover table-bordered">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Пользователь</th>
+            <th scope="col">Подпись</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr scope="row"  th:each="level : ${document.getLevelXmls()}" >
+            <th class="align-middle" th:text="${level.name}"></th>
+            <th class="align-middle" ><p th:text="${level.userSign}"></p></th>
+            <th class="align-middle" th:text="${level.sign}"></th>
+            <th th:onclick = "location.href='openLevel?name='+/*[[${level.name}]]*/+;">Подписать</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
